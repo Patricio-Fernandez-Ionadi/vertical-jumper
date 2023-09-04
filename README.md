@@ -4,7 +4,7 @@ The Essentials:
 - ✅Gravity
 - ✅Player movement
 - ✅Background sprite
-- Collision bloks
+- ✅Collision bloks
 - Collision detection
 - Sprite animation
 - Hitbox implementation
