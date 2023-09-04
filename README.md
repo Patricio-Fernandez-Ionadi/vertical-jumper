@@ -2,8 +2,8 @@ The Essentials:
 
 - ✅Project setup
 - ✅Gravity
-- Player movement
-- Background sprite
+- ✅Player movement
+- ✅Background sprite
 - Collision bloks
 - Collision detection
 - Sprite animation
