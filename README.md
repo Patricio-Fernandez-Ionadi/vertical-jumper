@@ -8,7 +8,7 @@ The Essentials:
 - ✅Collision detection
 - ✅Sprite animation
 - ✅Hitbox implementation
-- Sprite swapping
+- ✅Sprite swapping
 - Platform jumping
 - Horizontal camera panning
 - Vertical camera panning

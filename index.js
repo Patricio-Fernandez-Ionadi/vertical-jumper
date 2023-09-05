@@ -60,6 +60,48 @@ const player = new Player({
 	collisionBlocks,
 	imageSrc: "./img/warrior/Idle.png",
 	frameRate: 8,
+	animations: {
+		Idle: {
+			imageSrc: "./img/warrior/Idle.png",
+			frameRate: 8,
+			frameBuffer: 3,
+		},
+		IdleLeft: {
+			imageSrc: "./img/warrior/IdleLeft.png",
+			frameRate: 8,
+			frameBuffer: 3,
+		},
+		Run: {
+			imageSrc: "./img/warrior/Run.png",
+			frameRate: 8,
+			frameBuffer: 5,
+		},
+		RunLeft: {
+			imageSrc: "./img/warrior/RunLeft.png",
+			frameRate: 8,
+			frameBuffer: 5,
+		},
+		Jump: {
+			imageSrc: "./img/warrior/Jump.png",
+			frameRate: 2,
+			frameBuffer: 3,
+		},
+		JumpLeft: {
+			imageSrc: "./img/warrior/JumpLeft.png",
+			frameRate: 2,
+			frameBuffer: 3,
+		},
+		Fall: {
+			imageSrc: "./img/warrior/Fall.png",
+			frameRate: 2,
+			frameBuffer: 3,
+		},
+		FallLeft: {
+			imageSrc: "./img/warrior/FallLeft.png",
+			frameRate: 2,
+			frameBuffer: 3,
+		},
+	},
 });
 
 const keys = {
@@ -103,8 +145,26 @@ function animate() {
 
 	player.update();
 	player.velocity.x = 0;
-	if (keys.d.pressed) player.velocity.x = 5;
-	else if (keys.a.pressed) player.velocity.x = -5;
+	if (keys.d.pressed) {
+		player.lastDirection = "right";
+		player.switchSprites("Run");
+		player.velocity.x = 2;
+	} else if (keys.a.pressed) {
+		player.lastDirection = "left";
+		player.velocity.x = -2;
+		player.switchSprites("RunLeft");
+	} else if (player.velocity.y === 0) {
+		if (player.lastDirection === "right") player.switchSprites("Idle");
+		else player.switchSprites("IdleLeft");
+	}
+
+	if (player.velocity.y < 0) {
+		if (player.lastDirection === "right") player.switchSprites("Jump");
+		else player.switchSprites("JumpLeft");
+	} else if (player.velocity.y > 0) {
+		if (player.lastDirection === "right") player.switchSprites("Fall");
+		else player.switchSprites("FallLeft");
+	}
 	c.restore();
 }
 
