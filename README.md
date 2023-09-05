@@ -6,7 +6,7 @@ The Essentials:
 - ✅Background sprite
 - ✅Collision bloks
 - ✅Collision detection
-- Sprite animation
+- ✅Sprite animation
 - Hitbox implementation
 - Sprite swapping
 - Platform jumping
