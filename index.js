@@ -54,9 +54,10 @@ const gravity = 0.5;
 
 const player = new Player({
 	position: {
-		x: 0,
+		x: 100,
 		y: 0,
 	},
+	collisionBlocks,
 });
 
 const keys = {
@@ -97,12 +98,12 @@ function animate() {
 	collisionPlatforms.forEach((platform) => {
 		platform.update();
 	});
-	c.restore();
 
 	player.update();
 	player.velocity.x = 0;
-	if (keys.d.pressed) player.velocity.x = 1;
-	else if (keys.a.pressed) player.velocity.x = -1;
+	if (keys.d.pressed) player.velocity.x = 5;
+	else if (keys.a.pressed) player.velocity.x = -5;
+	c.restore();
 }
 
 animate();
@@ -118,7 +119,7 @@ window.addEventListener("keydown", (e) => {
 			// player.velocity.x = -1;
 			break;
 		case "w":
-			player.velocity.y = -20;
+			player.velocity.y = -8;
 			break;
 	}
 });
