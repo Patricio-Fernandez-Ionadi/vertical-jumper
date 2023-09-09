@@ -93,6 +93,29 @@ class Player extends Sprite {
 			camera.position.x -= this.velocity.x;
 		}
 	}
+	shouldPanCameraDown({ camera }) {
+		if (this.cameraBox.position.y + this.velocity.y <= 0) return;
+
+		if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
+			camera.position.y -= this.velocity.y;
+		}
+	}
+	shouldPanCameraUp({ canvas, camera }) {
+		if (
+			this.cameraBox.position.y + this.cameraBox.height + this.velocity.y >=
+			432
+		)
+			return;
+
+		const scaledCanvas = canvas.height / 4;
+
+		if (
+			this.cameraBox.position.y + this.cameraBox.height >=
+			Math.abs(camera.position.y) + scaledCanvas
+		) {
+			camera.position.y -= this.velocity.y;
+		}
+	}
 
 	update() {
 		this.updateFrames();
@@ -100,13 +123,13 @@ class Player extends Sprite {
 
 		this.updateCameraBox();
 		// draws camera box
-		c.fillStyle = "rgba(0, 0, 255, 0.2)";
-		c.fillRect(
-			this.cameraBox.position.x,
-			this.cameraBox.position.y,
-			this.cameraBox.width,
-			this.cameraBox.height
-		);
+		// c.fillStyle = "rgba(0, 0, 255, 0.2)";
+		// c.fillRect(
+		// 	this.cameraBox.position.x,
+		// 	this.cameraBox.position.y,
+		// 	this.cameraBox.width,
+		// 	this.cameraBox.height
+		// );
 
 		// draws out the image
 		// c.fillStyle = "rgba(0, 255, 0, 0.2)";
