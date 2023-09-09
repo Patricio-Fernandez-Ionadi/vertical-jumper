@@ -11,5 +11,7 @@ The Essentials:
 - ✅Sprite swapping
 - ✅Platform jumping
 - ✅Horizontal camera panning
-- Vertical camera panning
+- ✅Vertical camera panning
 - Next steps
+
+<!-- https://www.youtube.com/watch?v=rTVoyWu8r6g -->
