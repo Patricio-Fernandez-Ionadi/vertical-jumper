@@ -10,6 +10,6 @@ The Essentials:
 - ✅Hitbox implementation
 - ✅Sprite swapping
 - ✅Platform jumping
-- Horizontal camera panning
+- ✅Horizontal camera panning
 - Vertical camera panning
 - Next steps
