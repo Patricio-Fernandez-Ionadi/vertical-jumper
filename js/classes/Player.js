@@ -2,6 +2,7 @@ class Player extends Sprite {
 	constructor({
 		position,
 		collisionBlocks,
+		collisionPlatforms,
 		imageSrc,
 		frameRate,
 		scale = 0.5,
@@ -15,6 +16,7 @@ class Player extends Sprite {
 		};
 		this.width = 25;
 		this.height = 25;
+		this.collisionPlatforms = collisionPlatforms;
 		this.collisionBlocks = collisionBlocks;
 		this.hitbox = {
 			position: {
@@ -37,7 +39,9 @@ class Player extends Sprite {
 	}
 
 	switchSprites(key) {
-		if (this.image === this.animations[key] || !this.loaded) return;
+		if (this.image === this.animations[key].image || !this.loaded) return;
+
+		this.currentFrame = 0;
 		this.image = this.animations[key].image;
 		this.frameBuffer = this.animations[key].frameBuffer;
 		this.frameRate = this.animations[key].frameRate;
@@ -136,6 +140,22 @@ class Player extends Sprite {
 
 					this.position.y =
 						collisionblock.position.y + collisionblock.height - offset + 0.01;
+					break;
+				}
+			}
+		}
+		// platform collision
+		for (let i = 0; i < this.collisionPlatforms.length; i++) {
+			const platformCollisions = this.collisionPlatforms[i];
+
+			if (platformCollision(this.hitbox, platformCollisions)) {
+				if (this.velocity.y > 0) {
+					this.velocity.y = 0;
+
+					const offset =
+						this.hitbox.position.y - this.position.y + this.hitbox.height;
+
+					this.position.y = platformCollisions.position.y - offset - 0.01;
 					break;
 				}
 			}

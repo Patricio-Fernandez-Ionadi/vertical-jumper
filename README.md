@@ -9,7 +9,7 @@ The Essentials:
 - ✅Sprite animation
 - ✅Hitbox implementation
 - ✅Sprite swapping
-- Platform jumping
+- ✅Platform jumping
 - Horizontal camera panning
 - Vertical camera panning
 - Next steps

@@ -44,13 +44,14 @@ platformCollisions2D.forEach((row, rowIndex) => {
 						x: columnIndex * 16,
 						y: rowIndex * 16,
 					},
+					height: 4,
 				})
 			);
 		}
 	});
 });
 
-const gravity = 0.5;
+const gravity = 0.1;
 
 const player = new Player({
 	position: {
@@ -58,6 +59,7 @@ const player = new Player({
 		y: 350,
 	},
 	collisionBlocks,
+	collisionPlatforms,
 	imageSrc: "./img/warrior/Idle.png",
 	frameRate: 8,
 	animations: {
@@ -174,14 +176,12 @@ window.addEventListener("keydown", (e) => {
 	switch (e.key) {
 		case "d":
 			keys.d.pressed = true;
-			// player.velocity.x = 1;
 			break;
 		case "a":
 			keys.a.pressed = true;
-			// player.velocity.x = -1;
 			break;
 		case "w":
-			player.velocity.y = -8;
+			player.velocity.y = -4;
 			break;
 	}
 });
